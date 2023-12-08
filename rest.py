@@ -1,7 +1,7 @@
 import json
 
 from flask import Flask, request, jsonify
-from summarizing import summarize_task
+from summarizing import summarize_task, summarize_article
 from tagging import modified_choosing_task
 
 app = Flask(__name__)
@@ -32,6 +32,18 @@ def tag_with_article_and_words():
         to_ret = modified_choosing_task(basic_content, words_list)
         print(to_ret)
         return jsonify(to_ret)
+    except Exception as e:
+        print(e)
+        return 500
+
+
+@app.route("/summarize/article", methods=["POST"])
+def simple_summarize():
+    try:
+        basic_content = request.get_json()['content']
+        to_ret = summarize_article(basic_content)
+        print(to_ret)
+        return {"summary": to_ret}
     except Exception as e:
         print(e)
         return 500

@@ -16,6 +16,7 @@ ans_tag3 = "[\"古埃及文明\",\"金字塔\",\"木乃伊\",\"历史遗产\",\"
 
 req1 = "请你用中文完成给文本打tag的任务，具体如下：你的输入是给定的tag列表和一段文本，这两者用分号隔开。请你只从给定的tag列表中选择适合这段文本的tag，以列表方式输出。"
 req2 = "请你用中文完成给文本打tag的任务，具体如下：你的输入是给定的一段文本。请你总结适合这段文本的tag，以列表方式输出。"
+req3 = "请你对给定的文本，概括其主要内容"
 
 
 def get_choosing_prompt(input_text, input_list):
@@ -45,3 +46,8 @@ def get_summarize_words_prompt(input_text):
           f"接下来轮到你\n" \
           f"输入：{input_text}\n" \
           f"输出："
+
+
+def get_summarize_article_prompt(input_text):
+    return f"{req3}:\n" \
+           f"{input_text}"

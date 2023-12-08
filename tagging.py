@@ -1,6 +1,6 @@
 import json
 import openai
-from utils import post_msg_llm, url2, remove_not_in
+from utils import post_msg_llm, url2, remove_not_in, extract_list
 from prompts import get_choosing_prompt
 
 
@@ -19,7 +19,7 @@ def simple_choosing_task(input_text, input_list):
     choosing_prompt = get_choosing_prompt(input_text, input_list)
     print(choosing_prompt)
     get_response = post_msg_llm(choosing_prompt, url2)
-    get_list = json.loads(get_response)
+    get_list = json.loads(extract_list(get_response))
     return get_list, get_response
 
 
