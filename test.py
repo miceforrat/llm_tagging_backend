@@ -6,6 +6,17 @@ headers = {
 }
 
 
+
+def test_summarize_words_limit():
+    url = "http://127.0.0.1:5000/summarize/words/limit_nums"
+    data = {
+        "content" : "人工智能是计算机科学的重要分支,旨在模拟、扩展和辅助人类智能。近年来,中国在政策扶持下的人工智能产业发展迅猛,成为全球人工智能产业的领导者之一。人工智能在医疗、教育、交通、工业生产等领域有广泛的应用,但同时也存在一些挑战,如就业压力、信息泄露风险和道德伦理问题。为此,需要加强对职业教育和培训的投入,建立健全的法律法规体系,引导企业和社会树立正确的价值观,确保人工智能技术的健康、可持续发展。未来,中国将继续加大人工智能领域的研究投入,推动人工智能技术与实体经济的深度融合,为全面建设社会主义现代化国家提供支撑。"
+    }
+
+    response = requests.post(url, headers=headers, data=json.dumps(data), verify=False)
+    print(response.text)
+
+
 def test_summarize_words():
     url = "http://127.0.0.1:5000/summarize/words"
     data = {
@@ -35,7 +46,9 @@ def test_summarize_article():
     print(response.text)
 
 
+
 if __name__ == "__main__":
-    test_summarize_words()
-    test_tagging()
-    test_summarize_article()
+    test_summarize_words_limit()
+    # test_summarize_words()
+    # test_tagging()
+    # test_summarize_article()

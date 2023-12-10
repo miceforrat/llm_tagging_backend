@@ -1,7 +1,7 @@
 import json
 
 from flask import Flask, request, jsonify
-from summarizing import summarize_task, summarize_article
+from summarizing import summarize_task, summarize_article, summarize_task_limit
 from tagging import modified_choosing_task
 
 app = Flask(__name__)
@@ -10,6 +10,18 @@ app = Flask(__name__)
 @app.route('/')
 def hello_world():
     return "Hello world!"
+
+# 对summarize_task任务限制tag数量
+@app.route("/summarize/words/limit_nums", methods=["POST"])
+def summarize_by_article_limit_nums():
+    try:
+        print("this is limit nums")
+        to_summarize = request.get_json()['content']
+        to_ret, _ = summarize_task_limit(to_summarize)
+        return jsonify(to_ret[:5])
+    except Exception as e:
+        print(e)
+        return 500
 
 
 @app.route("/summarize/words", methods=["POST"])
