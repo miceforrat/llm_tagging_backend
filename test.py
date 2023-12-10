@@ -1,9 +1,23 @@
 import requests
 import json
+from testing_text import histry_list
 
 headers = {
     "Content-Type": "application/json",
 }
+
+
+def test_summarize_words_limit_or_not(list, index):
+    print(list[index])
+    url = "http://127.0.0.1:5000/summarize/words"
+    url_limit = "http://127.0.0.1:5000/summarize/words/limit_nums"
+    data = {
+        "content" : list[index]
+    }
+    response = requests.post(url, headers=headers, data=json.dumps(data), verify=False)
+    response_limit = requests.post(url_limit, headers=headers, data=json.dumps(data), verify=False)
+    print(response.text)
+    print(response_limit.text)
 
 
 
@@ -48,7 +62,9 @@ def test_summarize_article():
 
 
 if __name__ == "__main__":
-    test_summarize_words_limit()
+    for i in range(0, len(histry_list)):
+        test_summarize_words_limit_or_not(histry_list, i)
+    # test_summarize_words_limit()
     # test_summarize_words()
     # test_tagging()
     # test_summarize_article()
