@@ -18,7 +18,7 @@ def summarize_by_article_limit_nums():
         print("this is limit nums")
         to_summarize = request.get_json()['content']
         to_ret, _ = summarize_task_limit(to_summarize)
-        return jsonify(to_ret[:5])
+        return jsonify(to_ret)
     except Exception as e:
         print(e)
         return 500

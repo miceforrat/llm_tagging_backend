@@ -1,7 +1,7 @@
 import json
 
 import utils
-from prompts import get_summarize_words_prompt,get_summarize_article_prompt, get_summarize_words_prompt_limit
+from prompts import get_summarize_words_prompt,get_summarize_article_prompt, get_summarize_words_prompt_limit, get_summarize_words_prompt_zero_shot
 from utils import post_msg_llm, url2, extract_list
 from tagging import modified_choosing_task
 
