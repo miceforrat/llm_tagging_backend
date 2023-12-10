@@ -1,14 +1,19 @@
 import requests
 import json
 from testing_text import histry_list
+from summarizing import input_num
 
 headers = {
     "Content-Type": "application/json",
 }
 
 
+
+
+
 def test_summarize_words_limit_or_not(list, index):
-    print(list[index])
+    print("原始文本：" + list[index])
+    print("原始文本长度：" + str(input_num(list[index])))
     url = "http://127.0.0.1:5000/summarize/words"
     url_limit = "http://127.0.0.1:5000/summarize/words/limit_nums"
     data = {
@@ -16,8 +21,8 @@ def test_summarize_words_limit_or_not(list, index):
     }
     response = requests.post(url, headers=headers, data=json.dumps(data), verify=False)
     response_limit = requests.post(url_limit, headers=headers, data=json.dumps(data), verify=False)
-    print(response.text)
-    print(response_limit.text)
+    print("没有数量限制的tag：" + response.text)
+    print("有数量限制的tag：" + response_limit.text + "\n")
 
 
 
