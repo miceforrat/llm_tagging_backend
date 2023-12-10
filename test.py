@@ -1,13 +1,13 @@
 import requests
 import json
-from testing_text import histry_list
+from testing_text import history_list, chemistry_list, math_list, food_list, clothing_list, game_list, se_list, ml_list, os_list, travelling_list, csdn_list
 from summarizing import input_num
 
 headers = {
     "Content-Type": "application/json",
 }
 
-
+GPT_TEXT_LIST = ["history_list", "chemistry_list", "math_list", "food_list", "clothing_list", "game_list", "se_list", "ml_list", "os_list", "travelling_list"]
 
 
 
@@ -66,9 +66,17 @@ def test_summarize_article():
 
 
 
-if __name__ == "__main__":
-    for i in range(0, len(histry_list)):
-        test_summarize_words_limit_or_not(histry_list, i)
+if __name__ == "__main__":  
+    # for list in GPT_TEXT_LIST:
+    #     print(list)
+    #     cur_list = locals()[list]
+    #     for i in range(0, len(cur_list)):
+    #         test_summarize_words_limit_or_not(cur_list, i)
+    #     print()
+
+    for i in range(0, len(csdn_list)):
+        test_summarize_words_limit_or_not(csdn_list, i)
+
     # test_summarize_words_limit()
     # test_summarize_words()
     # test_tagging()
