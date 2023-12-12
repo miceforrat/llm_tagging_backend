@@ -3,9 +3,11 @@ import json
 from flask import Flask, request, jsonify
 from summarizing import summarize_task, summarize_article, summarize_task_limit
 from tagging import modified_choosing_task
+from flask_cors import CORS
+# 要使用flask_cors, 关闭代理并在终端运行 pip install flask_cors
 
 app = Flask(__name__)
-
+CORS(app)
 
 @app.route('/')
 def hello_world():
