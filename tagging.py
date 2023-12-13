@@ -1,7 +1,7 @@
 import json
 import openai
 from utils import post_msg_llm, url2, remove_not_in, extract_list
-from prompts import get_choosing_prompt
+from prompts import get_choosing_prompt, get_choosing_prompt_zero_shot
 
 
 OPEN_API_KEY = "FAKE_KEY"

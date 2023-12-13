@@ -23,6 +23,13 @@ req3 = "请你对给定的文本，用简短的语句概括其主要内容，不
 req4 = "根据以下内容，为我提取3个中文关键词："
 req5 = "请根据以下内容，为我提取中文关键词："
 req6 = "请你用中文完成给文本打3个tag的任务，具体如下：你的输入是给定的一段文本。请你总结适合这段文本的3个tag，以列表方式输出。"
+req7 = "请你用中文完成给文本打tag的任务，具体如下：你的输入是给定的一段文本。请你总结适合这段文本的一个tag，以[\"xx\"]的形式输出。"
+
+
+def get_choosing_prompt_zero_shot(input_text, input_list):
+    print(input_list)
+    return f"{req7}"\
+           f"{input_text};{input_list}\n"
 
 
 def get_choosing_prompt(input_text, input_list):
