@@ -10,12 +10,12 @@ headers = {
 }
 
 
-def post_msg_llm(message, url, temperature=0.95):
+def post_msg_llm(message, url, temperature=0.60):
     data = {
         "model": "Qwen-14B",
         "messages": [{"role": "user", "content": f"{message}"}],
         "temperature": temperature,
-        "max_tokens": 4096
+        "max_tokens": 8192
     }
 
     response = requests.post(url, headers=headers, data=json.dumps(data), verify=False)
