@@ -11,6 +11,7 @@ app = Flask(__name__)
 def hello_world():
     return "Hello world!"
 
+
 # 对summarize_task任务限制tag数量
 @app.route("/summarize/words/limit_nums", methods=["POST"])
 def summarize_by_article_limit_nums():

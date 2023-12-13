@@ -6,7 +6,6 @@ headers = {
 }
 
 
-
 def test_summarize_words_limit():
     url = "http://127.0.0.1:5000/summarize/words/limit_nums"
     data = {

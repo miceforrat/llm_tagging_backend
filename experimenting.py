@@ -1,6 +1,6 @@
 from tagging import url2
 from utils import post_msg_llm
-from prompts import get_choosing_prompt, get_summarize_words_prompt, req1, req2
+from prompts import get_choosing_prompt, get_summarize_words_prompt, req1, req2, get_summarize_article_prompt
 
 url1 = "http://10.58.0.2:6677/v1/chat/completions"
 
@@ -51,8 +51,15 @@ def _0_shot():
     print(post_msg_llm(intros2, url2))
 
 
+def experiment_3(text_in):
+    intro3 = get_summarize_article_prompt(text_in)
+    print(intro3)
+    print(post_msg_llm(intro3, url2))
+
+
 if __name__ == "__main__":
     # _0_shot()
-    experiment_1(check_out_article, check_out_list)
-    experiment_2(check_out_article)
+    # experiment_1(check_out_article, check_out_list)
+    # experiment_2(check_out_article)
+    experiment_3(check_out_article)
 
