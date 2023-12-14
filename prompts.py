@@ -88,3 +88,21 @@ def get_summarize_words_prompt_limit(input_text):
 def get_summarize_article_prompt(input_text):
     return f"{req3}\n" \
            f"{input_text}"
+
+
+def get_words_score_prompt(input_text, input_list):
+    return f"{req8}\n" \
+           f"请参照以下给出的例子进行输入输出：\n" \
+           f"输入文本：{example_1}\n" \
+           f"输入列表：{tag_list1}\n" \
+           f"输出：{score_list1}\n" \
+           f"输入文本：{example_2}\n" \
+           f"输入列表：{tag_list2}\n" \
+           f"输出：{score_list2}\n" \
+           f"输入文本：{example_3}\n" \
+           f"输入列表：{tag_list3}\n" \
+           f"输出：{score_list3}\n" \
+           f"接下来轮到你：\n" \
+           f"输入文本：{input_text}\n" \
+           f"输入列表：{input_list}\n" \
+           f"输出："
