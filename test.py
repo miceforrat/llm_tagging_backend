@@ -47,7 +47,7 @@ def test_summarize_words():
 
 
 def test_tagging(list, index, tag_list):
-    url = "http://127.0.0.1:5000/tagging"
+    url = "http://127.0.0.1:5000/tagging/score"
     data = {
         "content": list[index],
         "words": tag_list

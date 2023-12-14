@@ -2,7 +2,7 @@ import json
 
 from flask import Flask, request, jsonify
 from summarizing import summarize_task, summarize_article, summarize_task_limit
-from tagging import modified_choosing_task
+from tagging import modified_choosing_task, score_choosing_task
 from flask_cors import CORS
 # 要使用flask_cors, 关闭代理并在终端运行 pip install flask_cors
 
@@ -36,6 +36,21 @@ def summarize_by_article():
     except Exception as e:
         print(e)
         return 500
+    
+
+@app.route("/tagging/score", methods=["POST"])
+def tag_with_article_and_words_score():
+    try:
+        basic_content = request.get_json()['content']
+        words_list = request.get_json()['words']
+        print(words_list)
+        to_ret = score_choosing_task(basic_content, words_list)
+        print(to_ret)
+        return to_ret
+    except Exception as e:
+        print(e)
+        return 500
+
 
 
 @app.route("/tagging", methods=["POST"])
