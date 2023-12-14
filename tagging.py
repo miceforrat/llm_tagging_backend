@@ -1,7 +1,7 @@
 import json
 import openai
 from utils import post_msg_llm, url2, remove_not_in, extract_list
-from prompts import get_choosing_prompt, get_choosing_prompt_zero_shot
+from prompts import get_choosing_prompt, get_choosing_prompt_zero_shot, get_words_score_prompt
 
 
 OPEN_API_KEY = "FAKE_KEY"
@@ -21,6 +21,13 @@ def simple_choosing_task(input_text, input_list):
     get_response = post_msg_llm(choosing_prompt, url2)
     get_list = json.loads(extract_list(get_response))
     return get_list, get_response
+
+
+def score_choosing_task(input_text, input_list):
+    choosing_prompt = get_words_score_prompt(input_text, input_list)
+    print(choosing_prompt)
+    get_response = post_msg_llm(choosing_prompt, url2)
+    return get_response
 
 
 def modified_choosing_task(input_text, input_list, epochs=3):
