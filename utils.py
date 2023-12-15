@@ -10,7 +10,7 @@ headers = {
 }
 
 
-def post_msg_llm(message, url, temperature=0.60):
+def post_msg_llm(message, url, temperature=0.30): # 0.60
     data = {
         "model": "Qwen-14B",
         "messages": [{"role": "user", "content": f"{message}"}],

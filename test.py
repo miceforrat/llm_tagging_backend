@@ -47,7 +47,7 @@ def test_summarize_words():
 
 
 def test_tagging(list, index, tag_list):
-    url = "http://127.0.0.1:5000/tagging/score"
+    url = "http://127.0.0.1:5000/tagging"
     data = {
         "content": list[index],
         "words": tag_list
@@ -75,16 +75,16 @@ if __name__ == "__main__":
     #         test_summarize_words_limit_or_not(cur_list, i)
     #     print()
 
-    # for i in range(0, len(little_red_book_list)):
-    #     test_summarize_article(little_red_book_list, i)
+    for i in range(0, len(travelling_list)):
+        test_tagging(travelling_list, i, tag_list)
 
-    random_list = []
-    for list in GPT_TEXT_LIST:
-        cur_list = locals()[list]
-        random_list.extend(cur_list)
-    random.shuffle(random_list)
-    for i in range(0, len(random_list)):
-        test_tagging(random_list, i, tag_list)
+    # random_list = []
+    # for list in GPT_TEXT_LIST:
+    #     cur_list = locals()[list]
+    #     random_list.extend(cur_list)
+    # # random.shuffle(random_list)
+    # for i in range(0, len(random_list)):
+    #     test_tagging(random_list, i, tag_list)
 
     # test_summarize_words_limit()
     # test_summarize_words()
