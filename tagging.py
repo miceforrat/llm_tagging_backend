@@ -26,7 +26,7 @@ def simple_choosing_task(input_text, input_list):
 def score_choosing_task(input_text, input_list):
     choosing_prompt = get_words_score_prompt(input_text, input_list)
     print(choosing_prompt)
-    get_response = post_msg_llm(choosing_prompt, url2)
+    get_response = post_msg_llm(choosing_prompt, url2, temperature=0.4)
     return get_response
 
 

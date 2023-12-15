@@ -52,7 +52,6 @@ def tag_with_article_and_words_score():
         return 500
 
 
-
 @app.route("/tagging", methods=["POST"])
 def tag_with_article_and_words():
     try:

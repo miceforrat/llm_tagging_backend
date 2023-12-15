@@ -9,7 +9,7 @@ headers = {
 }
 
 GPT_TEXT_LIST = ["history_list", "chemistry_list", "math_list", "food_list", "clothing_list", "game_list", "se_list", "ml_list", "os_list", "travelling_list"]
-tag_list = ["历史", "化学", "数学", "食物", "服装", "游戏", "软件工程", "机器学习", "操作系统", "旅游"]
+tag_list = ["历史", "化学", "数学", "食物", "服装", "游戏", "软件工程", "机器学习", "操作系统", "旅游景点"]
 
 
 def test_summarize_words_limit_or_not(list, index):
