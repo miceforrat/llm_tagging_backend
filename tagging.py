@@ -43,5 +43,9 @@ def modified_choosing_task(input_text, input_list, epochs=3):
         last_list = word_list
         last_len = len(word_list)
         # print(last_list_str)
-    return remove_not_in(word_list, input_list)
+    if remove_not_in(word_list, input_list) == [] or len(remove_not_in(word_list, input_list)) > 3:
+        recursive_times = recursive_times + 1
+        return modified_choosing_task(input_text, input_list, epochs=2)
+    else:
+        return remove_not_in(word_list, input_list)
 
