@@ -57,6 +57,17 @@ def test_tagging(list, index, tag_list):
     print(response.text)
 
 
+def test_tagging_score(list, index, tag_list):
+    url = "http://127.0.0.1:5000/tagging/score"
+    data = {
+        "content": list[index],
+        "words": tag_list
+    }
+    print("原始文本：" + list[index])
+    response = requests.post(url, headers=headers, data=json.dumps(data), verify=False)
+    print(response.text)
+
+
 def test_summarize_article(list, index):
     url = "http://127.0.0.1:5000/summarize/article"
     data = {
@@ -75,18 +86,18 @@ if __name__ == "__main__":
     #         test_summarize_words_limit_or_not(cur_list, i)
     #     print()
 
-    for i in range(0, len(travelling_list)):
-        test_tagging(travelling_list, i, tag_list)
+    # for i in range(0, len(travelling_list)):
+    #     test_tagging(travelling_list, i, tag_list)
 
     # random_list = []
     # for list in GPT_TEXT_LIST:
     #     cur_list = locals()[list]
     #     random_list.extend(cur_list)
-    # # random.shuffle(random_list)
+    # random.shuffle(random_list)
     # for i in range(0, len(random_list)):
-    #     test_tagging(random_list, i, tag_list)
+    #     test_tagging_score(random_list, i, tag_list)
 
-    # test_summarize_words_limit()
+    test_summarize_words_limit()
     # test_summarize_words()
     # test_tagging()
     # test_summarize_article()
