@@ -1,7 +1,7 @@
 import requests
 import json
 import openai
-url2 = "http://10.58.0.2:6678/v1/chat/completions"
+url2 = "http://10.58.0.4:8000/v1/chat/completions"
 
 OPEN_API_KEY = "FAKE_KEY"
 headers = {
@@ -48,3 +48,7 @@ def extract_list(string_in):
 
 def remove_not_in(list_1, list_raw):
     return list(set(list_1).intersection(set(list_raw)))
+
+
+def remove_in(list_1, list_raw):
+    return list(set(list_1).difference(set(list_raw)))

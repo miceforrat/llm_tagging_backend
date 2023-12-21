@@ -59,9 +59,13 @@ def tag_with_article_and_words():
         basic_content = request.get_json()['content']
         words_list = request.get_json()['words']
         print(words_list)
-        to_ret = modified_choosing_task(basic_content, words_list)
+        to_ret, to_ret_rec = modified_choosing_task(basic_content, words_list)
         print(to_ret)
-        return jsonify(to_ret)
+        response = {
+            "to_ret": to_ret,
+            "to_ret_rec": to_ret_rec
+        }
+        return jsonify(response)
     except Exception as e:
         print(e)
         return 500
