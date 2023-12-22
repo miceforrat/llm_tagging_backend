@@ -96,6 +96,7 @@ if __name__ == "__main__":
     # random.shuffle(random_list)
     # for i in range(0, len(random_list)):
     #     test_tagging_score(random_list, i, tag_list)
+    #     test_tagging(random_list, i, tag_list)
 
     test_summarize_words_limit()
     # test_summarize_words()

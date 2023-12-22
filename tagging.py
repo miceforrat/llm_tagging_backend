@@ -1,13 +1,13 @@
 import json
 import openai
-from utils import post_msg_llm, url2, remove_not_in, extract_list
+from utils import post_msg_llm, url2, remove_not_in, extract_list, remove_in
 from prompts import get_choosing_prompt, get_choosing_prompt_zero_shot, get_words_score_prompt
 
 
 OPEN_API_KEY = "FAKE_KEY"
 # OPEN_API_KEY = os.getenv("OPENAI_API_KEY")
 # openai.api_base = "http://10.58.0.2:6677/v1"
-openai.api_key = OPEN_API_KEY
+# openai.api_key = OPEN_API_KEY
 
 headers = {
     "Content-Type": "application/json",
@@ -43,9 +43,5 @@ def modified_choosing_task(input_text, input_list, epochs=3):
         last_list = word_list
         last_len = len(word_list)
         # print(last_list_str)
-    if remove_not_in(word_list, input_list) == [] or len(remove_not_in(word_list, input_list)) > 3:
-        recursive_times = recursive_times + 1
-        return modified_choosing_task(input_text, input_list, epochs=2)
-    else:
-        return remove_not_in(word_list, input_list)
+    return remove_not_in(word_list, input_list), remove_in(word_list, input_list)
 
