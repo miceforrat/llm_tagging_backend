@@ -31,6 +31,7 @@ def score_choosing_task(input_text, input_list):
 
 
 def modified_choosing_task(input_text, input_list, epochs=3):
+    print(input_list)
     last_len = -2
     last_list = input_list
     print(f"inputs:{input_list}")

@@ -9,7 +9,7 @@ headers = {
 }
 
 GPT_TEXT_LIST = ["history_list", "chemistry_list", "math_list", "food_list", "clothing_list", "game_list", "se_list", "ml_list", "os_list", "travelling_list"]
-tag_list = ["历史", "化学", "数学", "食物", "服装", "游戏", "软件工程", "机器学习", "操作系统", "旅游景点"]
+tag_list = ["历史", "化学", "数学", "食物", "服装", "游戏", "学术诚信", "旅游景点"]
 
 
 def test_summarize_words_limit_or_not(list, index):
@@ -49,10 +49,14 @@ def test_summarize_words():
 def test_tagging(list, index, tag_list):
     url = "http://127.0.0.1:5000/tagging"
     data = {
-        "content": list[index],
+        "content": '''
+        对于大作业，最重要的一件事就是不要抄袭！我们会通过检查 git 提交记录、代码查重等方式判断你是否有抄袭的嫌疑。对于被判定为抄袭的同学，我们将会私下约你进行面查并根据结果作出相应的惩罚（如根据情况严重程度扣除一个 Lab 的分数或全部大作业分数）。
+关于代码查重的识别能力，请参见 《代码抄袭：那些让985学生沉默，211学生流泪的真相》。
+请注意，并不只有抄袭别人的代码才是违背学术诚信的行为。更多请参见 MIT 对于学术诚信的定义。
+    ''',
         "words": tag_list
     }
-    print("原始文本：" + list[index])
+    # print("原始文本：" + list[index])
     response = requests.post(url, headers=headers, data=json.dumps(data), verify=False)
     print(response.text)
 
@@ -89,6 +93,8 @@ if __name__ == "__main__":
     # for i in range(0, len(travelling_list)):
     #     test_tagging(travelling_list, i, tag_list)
 
+    test_tagging(travelling_list, 0, tag_list)
+
     # random_list = []
     # for list in GPT_TEXT_LIST:
     #     cur_list = locals()[list]
@@ -98,7 +104,7 @@ if __name__ == "__main__":
     #     test_tagging_score(random_list, i, tag_list)
     #     test_tagging(random_list, i, tag_list)
 
-    test_summarize_words_limit()
+    # test_summarize_words_limit()
     # test_summarize_words()
     # test_tagging()
     # test_summarize_article()

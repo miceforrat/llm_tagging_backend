@@ -30,6 +30,7 @@ def post_msg_llm(message, url, temperature=0.30):  # 0.60
     # choices = json_res["choices"]
     # last_choice = choices[-1]
     # output = last_choice["message"]['content']
+    print("output:" + output)
     return output
 
 
